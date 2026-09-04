@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evalneth Revolution — Stubborn Pimples, Black Spots & Rough Skin Solution</title>
-<!-- Paystack Inline JS Library -->
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
   :root{
@@ -16,6 +15,7 @@
     --cream-2:#efe8d8;
     --text-dark:#1d2b23;
     --text-muted:#4c5a52;
+    --pink:#f3d9e2;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
@@ -25,6 +25,7 @@
     line-height:1.5;
   }
   img{max-width:100%;display:block;}
+  .sans{font-family:Arial,Helvetica,sans-serif;}
   a{text-decoration:none;color:inherit;}
   .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
 
@@ -48,10 +49,6 @@
   
   .header-actions {display: flex; align-items: center; gap: 12px;}
   
-  .mobile-rectangle-grid {
-    display: none; /* Desktop default hidden */
-  }
-
   .btn-order{
     background:var(--gold);
     color:var(--green-deep);
@@ -305,7 +302,7 @@
   }
   .btn-pay-now:hover { background: var(--gold-light); }
 
-  /* ---------- RESPONSIVE MOBILE 2x2 RECTANGLE GRID ---------- */
+  /* ---------- RESPONSIVE ---------- */
   @media(max-width:980px){
     .hero .wrap{grid-template-columns:1fr;}
     .hero-visual{order:-1;}
@@ -318,88 +315,22 @@
     .final-cta .wrap{grid-template-columns:1fr;text-align:center;}
     .final-cta .prodshot{margin:0 auto;}
     
-    /* Hide desktop nav perks */
-    .nav-perks { display: none; }
-
-    /* Mobile 2x2 Rectangle Grid */
-    .mobile-rectangle-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      width: 100%;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      font-family: Arial, sans-serif;
-      font-size: .72rem;
-      text-align: center;
-    }
-
-    .grid-cell {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(201, 154, 62, 0.3);
-      border-radius: 6px;
-      padding: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 72px;
-    }
-
-    /* Top-Left: BUY 3 SETS & GET 1 FREE */
-    .cell-top-left {
-      grid-column: 1;
-      grid-row: 1;
-    }
-
-    /* Top-Right: Even bigger hero_products_header image */
-    .cell-top-right {
-      grid-column: 2;
-      grid-row: 1;
-      padding: 2px;
-    }
-    .small-header-img {
-      width: 100%;
-      max-width: 150px;
-      height: 85px;
-      object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid var(--gold);
-    }
-
-    /* Bottom-Left: FREE DELIVERY NATIONWIDE */
-    .cell-bottom-left {
-      grid-column: 1;
-      grid-row: 2;
-    }
-
-    /* Bottom-Right: WE TAKE Overseas Orders */
-    .cell-bottom-right {
-      grid-column: 2;
-      grid-row: 2;
-    }
-
-    /* Cart and Order buttons right below the rectangle grid */
+    /* Neat mobile layout for perks while maintaining fluidity */
+    .nav-perks{display:flex;width:100%;justify-content:center;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.15);font-size:.72rem;}
+    
+    /* Expand header actions to fill the screen width evenly and fluidly */
     .header-actions {
       display: flex;
       width: 100%;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 10px;
     }
-    
-    .header-actions .cart-btn-trigger {
-      flex: 1;
-      justify-content: center;
-      padding: 10px;
-      font-size: 0.85rem;
-    }
-
+    .header-actions .cart-btn-trigger,
     .header-actions .btn-order {
       flex: 1;
       justify-content: center;
-      padding: 10px;
-      font-size: 0.85rem;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: 0.9rem;
     }
 
     header .wrap{justify-content:space-between;}
@@ -416,34 +347,11 @@
       <span class="leaf">🌿</span>
       <span>Evalneth<span class="sub">Revolution</span></span>
     </div>
-
-    <!-- Desktop Nav Perks -->
     <div class="nav-perks">
       <div class="perk"><span class="ic">🚚</span><span>FREE DELIVERY<br>NATIONWIDE</span></div>
       <div class="perk"><span class="ic">🎁</span><span>BUY 3 SETS &amp; GET 1<br>FREE</span></div>
       <div class="perk"><span class="ic">🌍</span><span>WE TAKE<br>Overseas Orders</span></div>
     </div>
-
-    <!-- Mobile 2x2 Rectangle Grid -->
-    <div class="mobile-rectangle-grid">
-      <!-- Top-Left -->
-      <div class="grid-cell cell-top-left">
-        <span style="color:var(--gold-light); font-weight:800;">🎁 BUY 3 SETS &amp; GET 1 FREE</span>
-      </div>
-      <!-- Top-Right (Even bigger hero_products_header image) -->
-      <div class="grid-cell cell-top-right">
-        <img src="assets/hero_products_header.jpg" alt="Evalneth Face Set" class="small-header-img">
-      </div>
-      <!-- Bottom-Left -->
-      <div class="grid-cell cell-bottom-left">
-        <span style="font-weight:700;">🚚 FREE DELIVERY NATIONWIDE</span>
-      </div>
-      <!-- Bottom-Right -->
-      <div class="grid-cell cell-bottom-right">
-        <span style="font-weight:700;">🌍 WE TAKE Overseas Orders</span>
-      </div>
-    </div>
-
     <div class="header-actions">
       <button class="cart-btn-trigger" onclick="toggleCart()">
         🛒 Cart <span class="cart-badge" id="cartCountBadge">0</span>
@@ -619,7 +527,6 @@
   </div>
 </footer>
 
-<!-- ---------- CART DRAWER OVERLAY ---------- -->
 <div class="cart-overlay" id="cartOverlay" onclick="handleOverlayClick(event)">
   <div class="cart-drawer">
     <div class="cart-header">
@@ -629,8 +536,7 @@
     
     <div class="cart-body">
       <div id="cartItemsContainer">
-        <!-- Dynamically rendered cart item -->
-      </div>
+        </div>
 
       <div class="checkout-form-section">
         <h4>Customer &amp; Delivery Details</h4>
