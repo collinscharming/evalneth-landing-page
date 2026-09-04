@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evalneth Revolution — Stubborn Pimples, Black Spots & Rough Skin Solution</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
   :root{
     --green-deep:#123626;
@@ -44,6 +45,9 @@
   .nav-perks .perk{display:flex;align-items:center;gap:8px;}
   .nav-perks .perk .ic{font-size:1.2rem;color:var(--gold-light);}
   .nav-perks .perk span{line-height:1.15;}
+  
+  .header-actions {display: flex; align-items: center; gap: 12px;}
+  
   .btn-order{
     background:var(--gold);
     color:var(--green-deep);
@@ -60,6 +64,35 @@
     transition:transform .15s ease, background .15s ease;
   }
   .btn-order:hover{background:var(--gold-light);transform:translateY(-1px);}
+  
+  .cart-btn-trigger {
+    background: var(--green-mid);
+    border: 2px solid var(--gold);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    transition: background .15s ease;
+  }
+  .cart-btn-trigger:hover { background: var(--gold); color: var(--green-deep); }
+  .cart-badge {
+    background: var(--gold);
+    color: var(--green-deep);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 4px;
+  }
+  .cart-btn-trigger:hover .cart-badge { background: var(--green-deep); color: #fff; }
+
   .btn-whatsapp{
     background:transparent;
     border:2px solid var(--green-deep);
@@ -209,6 +242,65 @@
     font-family:Arial,sans-serif;font-weight:700;padding:8px 16px;border-radius:5px;font-size:.75rem;
   }
 
+  /* ---------- CART DRAWER & CHECKOUT MODAL STYLES ---------- */
+  .cart-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); z-index: 1000;
+    display: none; justify-content: flex-end; backdrop-filter: blur(2px);
+  }
+  .cart-overlay.open { display: flex; }
+  .cart-drawer {
+    width: 100%; max-width: 450px; background: #fff; height: 100%;
+    display: flex; flex-direction: column; box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+    animation: slideInRight 0.3s ease; font-family: Arial, sans-serif;
+  }
+  @keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  .cart-header {
+    background: var(--green-deep); color: #fff; padding: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cart-header h3 { font-size: 1.1rem; letter-spacing: 0.5px; font-weight: 800; }
+  .cart-close { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+  
+  .cart-body { padding: 20px; flex-grow: 1; overflow-y: auto; }
+  .cart-item-row {
+    display: flex; gap: 15px; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #eee; margin-bottom: 15px;
+  }
+  .cart-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; }
+  .cart-item-info { flex-grow: 1; }
+  .cart-item-title { font-weight: 800; font-size: 0.9rem; color: var(--green-deep); margin-bottom: 4px; }
+  .cart-item-price { color: var(--gold); font-weight: 800; font-size: 0.85rem; }
+  
+  .qty-controls { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .qty-btn {
+    background: var(--cream); border: 1px solid #ccc; width: 26px; height: 26px;
+    border-radius: 4px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .qty-btn:hover { background: var(--gold-light); }
+  .qty-val { font-weight: 800; font-size: 0.85rem; min-width: 20px; text-align: center; }
+
+  .checkout-form-section { margin-top: 15px; border-top: 2px dashed #eee; padding-top: 15px; }
+  .checkout-form-section h4 { font-size: 0.95rem; color: var(--green-deep); margin-bottom: 12px; font-weight: 800; }
+  .form-group { margin-bottom: 12px; }
+  .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; font-family: Arial, sans-serif;
+  }
+  .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--green-deep); }
+
+  .cart-footer { padding: 20px; background: var(--cream); border-top: 1px solid #ddd; }
+  .cart-summary-line { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; font-weight: 700; }
+  .cart-summary-line.total { font-size: 1.1rem; color: var(--green-deep); border-top: 1px solid #ccc; padding-top: 8px; margin-top: 8px; }
+  .btn-pay-now {
+    width: 100%; background: var(--gold); color: var(--green-deep); border: none;
+    padding: 14px; border-radius: 6px; font-family: Arial, sans-serif; font-weight: 800;
+    font-size: 1rem; cursor: pointer; text-align: center; margin-top: 15px; transition: background 0.15s;
+  }
+  .btn-pay-now:hover { background: var(--gold-light); }
+
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:980px){
     .hero .wrap{grid-template-columns:1fr;}
@@ -240,7 +332,12 @@
       <div class="perk"><span class="ic">🎁</span><span>BUY 3 SETS &amp; GET<br>FREE delivery anywhere in Nigeria</span></div>
       <div class="perk"><span class="ic">🌍</span><span>WE TAKE<br>Overseas Orders</span></div>
     </div>
-    <a href="https://paystack.shop/pay/evalneth" class="btn-order" target="_blank">🛒 ORDER NOW — ₦9,500</a>
+    <div class="header-actions">
+      <button class="cart-btn-trigger" onclick="toggleCart()">
+        🛒 Cart <span class="cart-badge" id="cartCountBadge">0</span>
+      </button>
+      <button class="btn-order" onclick="addToCartAndOpen()">🛒 ORDER NOW</button>
+    </div>
   </div>
 </header>
 
@@ -253,7 +350,7 @@
       <p>The Evalneth Revolution Face Set is a powerful skin care product that is used to get rid of stubborn pimples, black spots, sunburn, rashes and itching, and rough faces... with no bleaching effects.</p>
       <p>What sets the Evalneth Revolution Face Set apart is its ability to adapt to your personal skin needs, and give you the best results regardless of your skin type...</p>
       <div class="cta-row">
-        <a href="https://paystack.shop/pay/evalneth" class="btn-order" target="_blank">🛒 ORDER NOW — ₦9,500</a>
+        <button class="btn-order" onclick="addToCartAndOpen()">🛒 ORDER NOW — ₦9,500</button>
         <a href="https://wa.me/2349167217746?text=Hello%2C%20I%27m%20interested%20in%20the%20Evalneth%20Revolution%20Face%20Set" class="btn-whatsapp" target="_blank">💬 CHAT ON WHATSAPP</a>
       </div>
     </div>
@@ -391,7 +488,7 @@
       </ul>
     </div>
     <div class="cta-block">
-      <a href="https://paystack.shop/pay/evalneth" class="btn-order" target="_blank">🛒 ORDER NOW — ₦9,500</a>
+      <button class="btn-order" onclick="addToCartAndOpen()">🛒 ORDER NOW — ₦9,500</button>
       <div class="secure">Secure payment powered by 💳 Paystack</div>
       <div class="paymethods">
         <span>VISA</span><span>Mastercard</span><span>Verve</span><span>Apple Pay</span><span>G Pay</span>
@@ -409,6 +506,232 @@
     <div class="foot-item">🚚 Fast Delivery to Your Doorstep</div>
   </div>
 </footer>
+
+<div class="cart-overlay" id="cartOverlay" onclick="handleOverlayClick(event)">
+  <div class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Shopping Cart</h3>
+      <button class="cart-close" onclick="toggleCart()">&times;</button>
+    </div>
+    
+    <div class="cart-body">
+      <div id="cartItemsContainer">
+        </div>
+
+      <div class="checkout-form-section">
+        <h4>Customer &amp; Delivery Details</h4>
+        <form id="checkoutForm">
+          <div class="form-group">
+            <label for="custName">Full Name *</label>
+            <input type="text" id="custName" required placeholder="e.g., Adaora Johnson">
+          </div>
+          <div class="form-group">
+            <label for="custEmail">Email Address *</label>
+            <input type="email" id="custEmail" required placeholder="e.g., adaora@gmail.com">
+          </div>
+          <div class="form-group">
+            <label for="custPhone">Phone Number *</label>
+            <input type="tel" id="custPhone" required placeholder="e.g., 08012345678">
+          </div>
+          <div class="form-group">
+            <label for="custState">State *</label>
+            <select id="custState" required>
+              <option value="">-- Select State --</option>
+              <option value="Abia">Abia</option>
+              <option value="Adamawa">Adamawa</option>
+              <option value="Akwa Ibom">Akwa Ibom</option>
+              <option value="Anambra">Anambra</option>
+              <option value="Bauchi">Bauchi</option>
+              <option value="Bayelsa">Bayelsa</option>
+              <option value="Benue">Benue</option>
+              <option value="Borno">Borno</option>
+              <option value="Cross River">Cross River</option>
+              <option value="Delta">Delta</option>
+              <option value="Ebonyi">Ebonyi</option>
+              <option value="Edo">Edo</option>
+              <option value="Ekiti">Ekiti</option>
+              <option value="Enugu">Enugu</option>
+              <option value="FCT">Federal Capital Territory (FCT)</option>
+              <option value="Gombe">Gombe</option>
+              <option value="Imo">Imo</option>
+              <option value="Jigawa">Jigawa</option>
+              <option value="Kaduna">Kaduna</option>
+              <option value="Kano">Kano</option>
+              <option value="Katsina">Katsina</option>
+              <option value="Kebbi">Kebbi</option>
+              <option value="Kogi">Kogi</option>
+              <option value="Kwara">Kwara</option>
+              <option value="Lagos">Lagos</option>
+              <option value="Nasarawa">Nasarawa</option>
+              <option value="Niger">Niger</option>
+              <option value="Ogun">Ogun</option>
+              <option value="Ondo">Ondo</option>
+              <option value="Osun">Osun</option>
+              <option value="Oyo">Oyo</option>
+              <option value="Plateau">Plateau</option>
+              <option value="Rivers">Rivers</option>
+              <option value="Sokoto">Sokoto</option>
+              <option value="Taraba">Taraba</option>
+              <option value="Yobe">Yobe</option>
+              <option value="Zamfara">Zamfara</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="custCity">City *</label>
+            <input type="text" id="custCity" required placeholder="e.g., Benin City">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">₦0</span>
+      </div>
+      <div class="cart-summary-line total">
+        <span>Total Amount:</span>
+        <span id="cartTotal">₦0</span>
+      </div>
+      <button class="btn-pay-now" onclick="initiatePaystackCheckout()">💳 PAY NOW WITH PAYSTACK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // PAYSTACK PUBLIC KEY CONFIGURED
+  const PAYSTACK_PUBLIC_KEY = 'pk_live_6256c9a4bd792b9b7bafc43e23cbcaec60d59084'; 
+
+  // Shopping Cart State
+  let cart = {
+    name: "Evalneth Revolution Face Set",
+    price: 9500,
+    quantity: 1,
+    image: "assets/hero_products.jpg"
+  };
+
+  function updateCartUI() {
+    const badge = document.getElementById('cartCountBadge');
+    badge.textContent = cart.quantity;
+
+    const container = document.getElementById('cartItemsContainer');
+    const subtotalEl = document.getElementById('cartSubtotal');
+    const totalEl = document.getElementById('cartTotal');
+
+    if (cart.quantity <= 0) {
+      container.innerHTML = `<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:20px 0;">Your cart is currently empty.</p>`;
+      subtotalEl.textContent = '₦0';
+      totalEl.textContent = '₦0';
+      return;
+    }
+
+    const subtotal = cart.price * cart.quantity;
+    
+    container.innerHTML = `
+      <div class="cart-item-row">
+        <img src="${cart.image}" alt="${cart.name}" class="cart-item-img">
+        <div class="cart-item-info">
+          <div class="cart-item-title">${cart.name}</div>
+          <div class="cart-item-price">₦${cart.price.toLocaleString()}</div>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQuantity(-1)">-</button>
+            <span class="qty-val">${cart.quantity}</span>
+            <button class="qty-btn" onclick="changeQuantity(1)">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    subtotalEl.textContent = `₦${subtotal.toLocaleString()}`;
+    totalEl.textContent = `₦${subtotal.toLocaleString()}`;
+  }
+
+  function changeQuantity(amount) {
+    cart.quantity += amount;
+    if (cart.quantity < 1) {
+      cart.quantity = 0;
+    }
+    updateCartUI();
+  }
+
+  function toggleCart() {
+    const overlay = document.getElementById('cartOverlay');
+    overlay.classList.toggle('open');
+    updateCartUI();
+  }
+
+  function handleOverlayClick(event) {
+    if (event.target === document.getElementById('cartOverlay')) {
+      toggleCart();
+    }
+  }
+
+  function addToCartAndOpen() {
+    if (cart.quantity === 0) {
+      cart.quantity = 1;
+    }
+    toggleCart();
+  }
+
+  function initiatePaystackCheckout() {
+    if (cart.quantity <= 0) {
+      alert("Please add at least one item to your cart before proceeding.");
+      return;
+    }
+
+    // Form inputs validation
+    const name = document.getElementById('custName').value.trim();
+    const email = document.getElementById('custEmail').value.trim();
+    const phone = document.getElementById('custPhone').value.trim();
+    const state = document.getElementById('custState').value;
+    const city = document.getElementById('custCity').value.trim();
+
+    if (!name || !email || !phone || !state || !city) {
+      alert("Please fill in all required customer and delivery details (Name, Email, Phone, State, City).");
+      return;
+    }
+
+    // Email basic regex validation check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const totalAmountInKobo = cart.price * cart.quantity * 100; // Paystack accepts amount in kobo
+
+    let handler = PaystackPop.setup({
+      key: PAYSTACK_PUBLIC_KEY,
+      email: email,
+      amount: totalAmountInKobo,
+      currency: "NGN",
+      metadata: {
+        custom_fields: [
+          { display_name: "Customer Name", variable_name: "customer_name", value: name },
+          { display_name: "Phone Number", variable_name: "phone_number", value: phone },
+          { display_name: "State", variable_name: "state", value: state },
+          { display_name: "City", variable_name: "city", value: city },
+          { display_name: "Item", variable_name: "item_name", value: cart.name },
+          { display_name: "Quantity", variable_name: "quantity", value: cart.quantity }
+        ]
+      },
+      callback: function(response) {
+        alert("Payment successful! Reference: " + response.reference);
+        toggleCart();
+      },
+      onClose: function() {
+        // Optional action when payment modal is closed
+      }
+    });
+
+    handler.openIframe();
+  }
+
+  // Initialize UI on load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCartUI();
+  });
+</script>
 
 </body>
 </html>
