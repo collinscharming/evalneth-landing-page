@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evalneth Revolution — Stubborn Pimples, Black Spots & Rough Skin Solution</title>
+<!-- Paystack Inline JS Library -->
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
   :root{
@@ -352,16 +353,16 @@
       grid-row: 1;
     }
 
-    /* Top-Right: Slightly bigger hero_products_header image */
+    /* Top-Right: Even bigger hero_products_header image */
     .cell-top-right {
       grid-column: 2;
       grid-row: 1;
-      padding: 4px;
+      padding: 2px;
     }
     .small-header-img {
       width: 100%;
-      max-width: 115px;
-      height: 60px;
+      max-width: 150px;
+      height: 85px;
       object-fit: cover;
       border-radius: 4px;
       border: 1px solid var(--gold);
@@ -416,22 +417,28 @@
       <span>Evalneth<span class="sub">Revolution</span></span>
     </div>
 
+    <!-- Desktop Nav Perks -->
     <div class="nav-perks">
       <div class="perk"><span class="ic">🚚</span><span>FREE DELIVERY<br>NATIONWIDE</span></div>
       <div class="perk"><span class="ic">🎁</span><span>BUY 3 SETS &amp; GET 1<br>FREE</span></div>
       <div class="perk"><span class="ic">🌍</span><span>WE TAKE<br>Overseas Orders</span></div>
     </div>
 
+    <!-- Mobile 2x2 Rectangle Grid -->
     <div class="mobile-rectangle-grid">
+      <!-- Top-Left -->
       <div class="grid-cell cell-top-left">
         <span style="color:var(--gold-light); font-weight:800;">🎁 BUY 3 SETS &amp; GET 1 FREE</span>
       </div>
+      <!-- Top-Right (Even bigger hero_products_header image) -->
       <div class="grid-cell cell-top-right">
         <img src="assets/hero_products_header.jpg" alt="Evalneth Face Set" class="small-header-img">
       </div>
+      <!-- Bottom-Left -->
       <div class="grid-cell cell-bottom-left">
         <span style="font-weight:700;">🚚 FREE DELIVERY NATIONWIDE</span>
       </div>
+      <!-- Bottom-Right -->
       <div class="grid-cell cell-bottom-right">
         <span style="font-weight:700;">🌍 WE TAKE Overseas Orders</span>
       </div>
@@ -612,6 +619,7 @@
   </div>
 </footer>
 
+<!-- ---------- CART DRAWER OVERLAY ---------- -->
 <div class="cart-overlay" id="cartOverlay" onclick="handleOverlayClick(event)">
   <div class="cart-drawer">
     <div class="cart-header">
@@ -621,7 +629,8 @@
     
     <div class="cart-body">
       <div id="cartItemsContainer">
-        </div>
+        <!-- Dynamically rendered cart item -->
+      </div>
 
       <div class="checkout-form-section">
         <h4>Customer &amp; Delivery Details</h4>
