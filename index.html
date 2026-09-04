@@ -230,4 +230,509 @@
   .final-cta .secure{font-family:Arial,sans-serif;font-size:.7rem;color:#b9c7bd;margin-bottom:8px;}
   .paymethods{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
   .paymethods span{
-    background:#fff;color:var(--green-deep);
+    background:#fff;color:var(--green-deep);font-family:Arial,sans-serif;font-weight:800;
+    font-size:.65rem;padding:5px 9px;border-radius:4px;
+  }
+
+  footer.bottom{background:var(--green-mid);color:#fff;padding:18px 0;}
+  footer.bottom .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center;font-family:Arial,sans-serif;}
+  .foot-item{display:flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;}
+  .foot-btn{
+    background:transparent;border:1px solid var(--gold-light);color:var(--gold-light);
+    font-family:Arial,sans-serif;font-weight:700;padding:8px 16px;border-radius:5px;font-size:.75rem;
+  }
+
+  /* ---------- CART DRAWER & CHECKOUT MODAL STYLES ---------- */
+  .cart-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); z-index: 1000;
+    display: none; justify-content: flex-end; backdrop-filter: blur(2px);
+  }
+  .cart-overlay.open { display: flex; }
+  .cart-drawer {
+    width: 100%; max-width: 450px; background: #fff; height: 100%;
+    display: flex; flex-direction: column; box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+    animation: slideInRight 0.3s ease; font-family: Arial, sans-serif;
+  }
+  @keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  .cart-header {
+    background: var(--green-deep); color: #fff; padding: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cart-header h3 { font-size: 1.1rem; letter-spacing: 0.5px; font-weight: 800; }
+  .cart-close { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+  
+  .cart-body { padding: 20px; flex-grow: 1; overflow-y: auto; }
+  .cart-item-row {
+    display: flex; gap: 15px; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #eee; margin-bottom: 15px;
+  }
+  .cart-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; }
+  .cart-item-info { flex-grow: 1; }
+  .cart-item-title { font-weight: 800; font-size: 0.9rem; color: var(--green-deep); margin-bottom: 4px; }
+  .cart-item-price { color: var(--gold); font-weight: 800; font-size: 0.85rem; }
+  
+  .qty-controls { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .qty-btn {
+    background: var(--cream); border: 1px solid #ccc; width: 26px; height: 26px;
+    border-radius: 4px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .qty-btn:hover { background: var(--gold-light); }
+  .qty-val { font-weight: 800; font-size: 0.85rem; min-width: 20px; text-align: center; }
+
+  .checkout-form-section { margin-top: 15px; border-top: 2px dashed #eee; padding-top: 15px; }
+  .checkout-form-section h4 { font-size: 0.95rem; color: var(--green-deep); margin-bottom: 12px; font-weight: 800; }
+  .form-group { margin-bottom: 12px; }
+  .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; font-family: Arial, sans-serif;
+  }
+  .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--green-deep); }
+
+  .cart-footer { padding: 20px; background: var(--cream); border-top: 1px solid #ddd; }
+  .cart-summary-line { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; font-weight: 700; }
+  .cart-summary-line.total { font-size: 1.1rem; color: var(--green-deep); border-top: 1px solid #ccc; padding-top: 8px; margin-top: 8px; }
+  .btn-pay-now {
+    width: 100%; background: var(--gold); color: var(--green-deep); border: none;
+    padding: 14px; border-radius: 6px; font-family: Arial, sans-serif; font-weight: 800;
+    font-size: 1rem; cursor: pointer; text-align: center; margin-top: 15px; transition: background 0.15s;
+  }
+  .btn-pay-now:hover { background: var(--gold-light); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{order:-1;}
+    .transform .grid3{grid-template-columns:1fr;}
+    .transform .arrow{display:none;}
+    .prod-grid{grid-template-columns:1fr;gap:30px;}
+    .steps-row{grid-template-columns:1fr;gap:20px;}
+    .steps-row .arrow{display:none;transform:rotate(90deg);}
+    .testi-grid{grid-template-columns:1fr;}
+    .final-cta .wrap{grid-template-columns:1fr;text-align:center;}
+    .final-cta .prodshot{margin:0 auto;}
+    .nav-perks{display:none;}
+    header .wrap{justify-content:space-between;}
+    .hero h1{font-size:1.9rem;}
+    .badge-struggle{font-size:0.85rem;letter-spacing:1px;padding:4px 10px;margin-bottom:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <span class="leaf">🌿</span>
+      <span>Evalneth<span class="sub">Revolution</span></span>
+    </div>
+    <div class="nav-perks">
+      <div class="perk"><span class="ic">🚚</span><span>FREE DELIVERY<br>NATIONWIDE</span></div>
+      <div class="perk"><span class="ic">🎁</span><span>BUY 3 SETS &amp; GET 1<br>FREE</span></div>
+      <div class="perk"><span class="ic">🌍</span><span>WE TAKE<br>Overseas Orders</span></div>
+    </div>
+    <div class="header-actions">
+      <button class="cart-btn-trigger" onclick="toggleCart()">
+        🛒 Cart <span class="cart-badge" id="cartCountBadge">0</span>
+      </button>
+      <button class="btn-order" onclick="addToCartAndOpen()">🛒 ORDER NOW</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="badge-struggle">Are You Struggling With</span>
+      <h1>Stubborn Pimples, Black Spots or Rough-Looking Skin?</h1>
+      <div class="tagline">Discover the Evalneth Revolution.</div>
+      <p>The Evalneth Revolution Face Set is a powerful skin care product that is used to get rid of stubborn pimples, black spots, sunburn, rashes and itching, and rough faces... with no bleaching effects.</p>
+      <p>What sets the Evalneth Revolution Face Set apart is its ability to adapt to your personal skin needs, and give you the best results regardless of your skin type...</p>
+      <div class="cta-row">
+        <button class="btn-order" onclick="addToCartAndOpen()">🛒 ORDER NOW — ₦11,900</button>
+        <a href="https://wa.me/2349167217746?text=Hello%2C%20I%27m%20interested%20in%20the%20Evalneth%20Revolution%20Face%20Set" class="btn-whatsapp" target="_blank">💬 CHAT ON WHATSAPP</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="frame">
+        <img src="assets/hero_products.jpg" alt="Evalneth Revolution face set — soap box, face cream and face cleanser">
+      </div>
+      <div class="price-badge">
+        <span class="only">ONLY</span>
+        <span class="amt">₦11,900</span>
+        <span class="free">FREE DELIVERY</span>
+        <span class="sub">NATIONWIDE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-row">
+  <div class="wrap">
+    <div class="trust-item"><span class="ic">🧴</span>For All Skin Types</div>
+    <div class="trust-item"><span class="ic">💧</span>No Bleaching</div>
+    <div class="trust-item"><span class="ic">✅</span>Safe &amp; Effective</div>
+    <div class="trust-item"><span class="ic">🧪</span>Trusted Formula</div>
+  </div>
+</section>
+
+<section class="transform">
+  <div class="wrap">
+    <div class="grid3">
+      <div class="photo-card">
+        <img src="assets/before.jpg" alt="Before using Evalneth Revolution — skin with dark spots">
+        <span class="photo-tag">Before</span>
+      </div>
+      <span class="arrow">»</span>
+      <div class="photo-card">
+        <img src="assets/after_soap.jpg" alt="After using Evalneth Revolution — clearer skin, holding face soap">
+        <span class="photo-tag">After</span>
+      </div>
+      <span class="arrow">»</span>
+      <div class="photo-card">
+        <img src="assets/washing_face.jpg" alt="Woman cleansing her face with Evalneth Revolution soap">
+      </div>
+    </div>
+  </div>
+  <div class="feature-strip">
+    <div class="wrap">
+      <div class="item"><span class="ic">🌿</span>Cleanses Deeply</div>
+      <div class="item"><span class="ic">🎯</span>Helps Fade Spots</div>
+      <div class="item"><span class="ic">🌿</span>Smooth &amp; Healthy Skin</div>
+      <div class="item"><span class="ic">🎯</span>No Bleaching Effects</div>
+    </div>
+  </div>
+</section>
+
+<section class="essentials">
+  <div class="wrap">
+    <h2>One Set. Three Essentials.</h2>
+    <div class="sub">A SIMPLE ROUTINE FOR HEALTHY, RADIANT SKIN.</div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="imgwrap"><img src="assets/box_front.jpg" alt="Evalneth Revolution Face Soap"></div>
+        <h3>Face Soap</h3>
+        <p>Natural cleansing bar soap that helps remove stubborn pimples, black spots, sunburn, rashes and itching, rough faces and more.</p>
+      </div>
+      <div class="prod-card">
+        <div class="imgwrap"><img src="assets/face_cleanser.jpg" alt="Evalneth Revolution Face Cleanser"></div>
+        <h3>Face Cleanser</h3>
+        <p>Gently cleanses and helps remove dirt, oil and impurities, leaving your skin feeling clean, refreshed and revitalized.</p>
+      </div>
+      <div class="prod-card">
+        <div class="imgwrap"><img src="assets/face_cream.jpg" alt="Evalneth Revolution Face Cream"></div>
+        <h3>Face Cream</h3>
+        <p>Nourishes and moisturizes the skin, helping maintain softness and a healthy-looking glow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <h2>3 Simple Steps To Your Skin Revolution</h2>
+    <div class="steps-row">
+      <div class="step">
+        <div class="circ"><img src="assets/washing_face.jpg" alt="Cleanse step"></div>
+        <div>
+          <span class="num">01</span>
+          <h4>Cleanse</h4>
+          <p>Start your routine with the Face Soap.</p>
+        </div>
+      </div>
+      <span class="arrow">»</span>
+      <div class="step">
+        <div class="circ"><img src="assets/step_cleanser.jpg" alt="Refresh step"></div>
+        <div>
+          <span class="num">02</span>
+          <h4>Refresh</h4>
+          <p>Follow with the Face Cleanser to refresh your skin.</p>
+        </div>
+      </div>
+      <span class="arrow">»</span>
+      <div class="step">
+        <div class="circ"><img src="assets/step_cream.jpg" alt="Care step"></div>
+        <div>
+          <span class="num">03</span>
+          <h4>Care</h4>
+          <p>Complete your routine with the Face Cream for daily care.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <h2>Real People. Real Results.</h2>
+    <div class="testi-grid">
+      <div class="testi-card"><img src="assets/testimonial_fb.jpg" alt="Facebook testimonial from OGE's Empire"></div>
+      <div class="testi-card"><img src="assets/whatsapp_2.jpg" alt="WhatsApp testimonial about receiving package"></div>
+      <div class="testi-card"><img src="assets/whatsapp_1.jpg" alt="WhatsApp testimonial from Favour Custome"></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <img class="prodshot" src="assets/hero_products.jpg" alt="Evalneth Revolution Face Set">
+    <div>
+      <h3>GET THE COMPLETE EVALNETH REVOLUTION FACE SET</h3>
+      <div class="setline">Face Soap + Face Cleanser + Face Cream</div>
+      <div class="price">₦11,900</div>
+      <ul>
+        <li>FREE DELIVERY NATIONWIDE</li>
+        <li>Buy 3 sets &amp; get 1 FREE</li>
+        <li>We take Overseas Orders</li>
+      </ul>
+    </div>
+    <div class="cta-block">
+      <button class="btn-order" onclick="addToCartAndOpen()">🛒 ORDER NOW — ₦11,900</button>
+      <div class="secure">Secure payment powered by 💳 Paystack</div>
+      <div class="paymethods">
+        <span>VISA</span><span>Mastercard</span><span>Verve</span><span>Apple Pay</span><span>G Pay</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bottom">
+  <div class="wrap">
+    <div class="foot-item">💬 HAVE QUESTIONS? Chat with us on WhatsApp.</div>
+    <a href="https://wa.me/2349167217746?text=Hello%2C%20I%27m%20interested%20in%20the%20Evalneth%20Revolution%20Face%20Set" class="foot-btn" target="_blank">💬 CHAT ON WHATSAPP</a>
+    <div class="foot-item">✅ 100% Original Products</div>
+    <div class="foot-item">🔒 Safe &amp; Secure Payment</div>
+    <div class="foot-item">🚚 Fast Delivery to Your Doorstep</div>
+  </div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay" onclick="handleOverlayClick(event)">
+  <div class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Shopping Cart</h3>
+      <button class="cart-close" onclick="toggleCart()">&times;</button>
+    </div>
+    
+    <div class="cart-body">
+      <div id="cartItemsContainer">
+        </div>
+
+      <div class="checkout-form-section">
+        <h4>Customer &amp; Delivery Details</h4>
+        <form id="checkoutForm">
+          <div class="form-group">
+            <label for="custName">Full Name *</label>
+            <input type="text" id="custName" required placeholder="e.g., Adaora Johnson">
+          </div>
+          <div class="form-group">
+            <label for="custEmail">Email Address *</label>
+            <input type="email" id="custEmail" required placeholder="e.g., adaora@gmail.com">
+          </div>
+          <div class="form-group">
+            <label for="custPhone">Phone Number *</label>
+            <input type="tel" id="custPhone" required placeholder="e.g., 08012345678">
+          </div>
+          <div class="form-group">
+            <label for="custState">State *</label>
+            <select id="custState" required>
+              <option value="">-- Select State --</option>
+              <option value="Abia">Abia</option>
+              <option value="Adamawa">Adamawa</option>
+              <option value="Akwa Ibom">Akwa Ibom</option>
+              <option value="Anambra">Anambra</option>
+              <option value="Bauchi">Bauchi</option>
+              <option value="Bayelsa">Bayelsa</option>
+              <option value="Benue">Benue</option>
+              <option value="Borno">Borno</option>
+              <option value="Cross River">Cross River</option>
+              <option value="Delta">Delta</option>
+              <option value="Ebonyi">Ebonyi</option>
+              <option value="Edo">Edo</option>
+              <option value="Ekiti">Ekiti</option>
+              <option value="Enugu">Enugu</option>
+              <option value="FCT">Federal Capital Territory (FCT)</option>
+              <option value="Gombe">Gombe</option>
+              <option value="Imo">Imo</option>
+              <option value="Jigawa">Jigawa</option>
+              <option value="Kaduna">Kaduna</option>
+              <option value="Kano">Kano</option>
+              <option value="Katsina">Katsina</option>
+              <option value="Kebbi">Kebbi</option>
+              <option value="Kogi">Kogi</option>
+              <option value="Kwara">Kwara</option>
+              <option value="Lagos">Lagos</option>
+              <option value="Nasarawa">Nasarawa</option>
+              <option value="Niger">Niger</option>
+              <option value="Ogun">Ogun</option>
+              <option value="Ondo">Ondo</option>
+              <option value="Osun">Osun</option>
+              <option value="Oyo">Oyo</option>
+              <option value="Plateau">Plateau</option>
+              <option value="Rivers">Rivers</option>
+              <option value="Sokoto">Sokoto</option>
+              <option value="Taraba">Taraba</option>
+              <option value="Yobe">Yobe</option>
+              <option value="Zamfara">Zamfara</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="custCity">City *</label>
+            <input type="text" id="custCity" required placeholder="e.g., Benin City">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">₦0</span>
+      </div>
+      <div class="cart-summary-line total">
+        <span>Total Amount:</span>
+        <span id="cartTotal">₦0</span>
+      </div>
+      <button class="btn-pay-now" onclick="initiatePaystackCheckout()">💳 PAY NOW WITH PAYSTACK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // PAYSTACK PUBLIC KEY CONFIGURED
+  const PAYSTACK_PUBLIC_KEY = 'pk_live_6256c9a4bd792b9b7bafc43e23cbcaec60d59084'; 
+
+  // Shopping Cart State
+  let cart = {
+    name: "Evalneth Revolution Face Set",
+    price: 11900,
+    quantity: 1,
+    image: "assets/hero_products.jpg"
+  };
+
+  function updateCartUI() {
+    const badge = document.getElementById('cartCountBadge');
+    badge.textContent = cart.quantity;
+
+    const container = document.getElementById('cartItemsContainer');
+    const subtotalEl = document.getElementById('cartSubtotal');
+    const totalEl = document.getElementById('cartTotal');
+
+    if (cart.quantity <= 0) {
+      container.innerHTML = `<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:20px 0;">Your cart is currently empty.</p>`;
+      subtotalEl.textContent = '₦0';
+      totalEl.textContent = '₦0';
+      return;
+    }
+
+    const subtotal = cart.price * cart.quantity;
+    
+    container.innerHTML = `
+      <div class="cart-item-row">
+        <img src="${cart.image}" alt="${cart.name}" class="cart-item-img">
+        <div class="cart-item-info">
+          <div class="cart-item-title">${cart.name}</div>
+          <div class="cart-item-price">₦${cart.price.toLocaleString()}</div>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQuantity(-1)">-</button>
+            <span class="qty-val">${cart.quantity}</span>
+            <button class="qty-btn" onclick="changeQuantity(1)">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    subtotalEl.textContent = `₦${subtotal.toLocaleString()}`;
+    totalEl.textContent = `₦${subtotal.toLocaleString()}`;
+  }
+
+  function changeQuantity(amount) {
+    cart.quantity += amount;
+    if (cart.quantity < 1) {
+      cart.quantity = 0;
+    }
+    updateCartUI();
+  }
+
+  function toggleCart() {
+    const overlay = document.getElementById('cartOverlay');
+    overlay.classList.toggle('open');
+    updateCartUI();
+  }
+
+  function handleOverlayClick(event) {
+    if (event.target === document.getElementById('cartOverlay')) {
+      toggleCart();
+    }
+  }
+
+  function addToCartAndOpen() {
+    if (cart.quantity === 0) {
+      cart.quantity = 1;
+    }
+    toggleCart();
+  }
+
+  function initiatePaystackCheckout() {
+    if (cart.quantity <= 0) {
+      alert("Please add at least one item to your cart before proceeding.");
+      return;
+    }
+
+    // Form inputs validation
+    const name = document.getElementById('custName').value.trim();
+    const email = document.getElementById('custEmail').value.trim();
+    const phone = document.getElementById('custPhone').value.trim();
+    const state = document.getElementById('custState').value;
+    const city = document.getElementById('custCity').value.trim();
+
+    if (!name || !email || !phone || !state || !city) {
+      alert("Please fill in all required customer and delivery details (Name, Email, Phone, State, City).");
+      return;
+    }
+
+    // Email basic regex validation check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const totalAmountInKobo = cart.price * cart.quantity * 100; // Paystack accepts amount in kobo
+
+    let handler = PaystackPop.setup({
+      key: PAYSTACK_PUBLIC_KEY,
+      email: email,
+      amount: totalAmountInKobo,
+      currency: "NGN",
+      metadata: {
+        custom_fields: [
+          { display_name: "Customer Name", variable_name: "customer_name", value: name },
+          { display_name: "Phone Number", variable_name: "phone_number", value: phone },
+          { display_name: "State", variable_name: "state", value: state },
+          { display_name: "City", variable_name: "city", value: city },
+          { display_name: "Item", variable_name: "item_name", value: cart.name },
+          { display_name: "Quantity", variable_name: "quantity", value: cart.quantity }
+        ]
+      },
+      callback: function(response) {
+        alert("Payment successful! Reference: " + response.reference);
+        toggleCart();
+      },
+      onClose: function() {
+        // Optional action when payment modal is closed
+      }
+    });
+
+    handler.openIframe();
+  }
+
+  // Initialize UI on load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCartUI();
+  });
+</script>
+
+</body>
+</html>
