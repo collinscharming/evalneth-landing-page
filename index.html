@@ -48,11 +48,6 @@
   .nav-perks .perk span{line-height:1.15;}
   
   .header-actions {display: flex; align-items: center; gap: 12px;}
-
-  /* Mobile header product image (Hidden by default on desktop) */
-  .mobile-header-img {
-    display: none;
-  }
   
   .btn-order{
     background:var(--gold);
@@ -323,19 +318,19 @@
     /* Neat mobile layout for perks while maintaining fluidity */
     .nav-perks{display:flex;width:100%;justify-content:center;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.15);font-size:.72rem;}
     
-    /* Display resized product image on mobile header's right side next to cart/buttons */
+    /* Expand header actions to fill the screen width evenly and fluidly */
     .header-actions {
       display: flex;
-      align-items: center;
+      width: 100%;
       gap: 10px;
     }
-    .mobile-header-img {
-      display: block;
-      width: 42px;
-      height: 42px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 2px solid var(--gold);
+    .header-actions .cart-btn-trigger,
+    .header-actions .btn-order {
+      flex: 1;
+      justify-content: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: 0.9rem;
     }
 
     header .wrap{justify-content:space-between;}
@@ -358,7 +353,6 @@
       <div class="perk"><span class="ic">🌍</span><span>WE TAKE<br>Overseas Orders</span></div>
     </div>
     <div class="header-actions">
-      <img src="assets/hero_products_header.jpg" alt="Evalneth Face Set" class="mobile-header-img">
       <button class="cart-btn-trigger" onclick="toggleCart()">
         🛒 Cart <span class="cart-badge" id="cartCountBadge">0</span>
       </button>
