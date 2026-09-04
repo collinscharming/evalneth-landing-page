@@ -15,7 +15,6 @@
     --cream-2:#efe8d8;
     --text-dark:#1d2b23;
     --text-muted:#4c5a52;
-    --pink:#f3d9e2;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
@@ -25,7 +24,6 @@
     line-height:1.5;
   }
   img{max-width:100%;display:block;}
-  .sans{font-family:Arial,Helvetica,sans-serif;}
   a{text-decoration:none;color:inherit;}
   .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
 
@@ -49,9 +47,8 @@
   
   .header-actions {display: flex; align-items: center; gap: 12px;}
   
-  /* Mobile header product image */
-  .mobile-header-img {
-    display: none;
+  .mobile-rectangle-grid {
+    display: none; /* Desktop default hidden */
   }
 
   .btn-order{
@@ -307,7 +304,7 @@
   }
   .btn-pay-now:hover { background: var(--gold-light); }
 
-  /* ---------- RESPONSIVE ---------- */
+  /* ---------- RESPONSIVE MOBILE 2x2 RECTANGLE GRID ---------- */
   @media(max-width:980px){
     .hero .wrap{grid-template-columns:1fr;}
     .hero-visual{order:-1;}
@@ -320,87 +317,88 @@
     .final-cta .wrap{grid-template-columns:1fr;text-align:center;}
     .final-cta .prodshot{margin:0 auto;}
     
-    /* Reordered mobile perks layout according to instructions */
-    .nav-perks {
-      display: flex;
-      flex-direction: column;
+    /* Hide desktop nav perks */
+    .nav-perks { display: none; }
+
+    /* Mobile 2x2 Rectangle Grid */
+    .mobile-rectangle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
       width: 100%;
-      align-items: center;
-      text-align: center;
-      gap: 14px;
-      margin-top: 12px;
-      padding-top: 12px;
+      margin-top: 10px;
+      padding-top: 10px;
       border-top: 1px solid rgba(255,255,255,0.15);
-      font-size: .75rem;
-    }
-    
-    /* 1. BUY 3 SETS & GET 1 FREE (on top of Free Delivery) */
-    .nav-perks .perk:nth-child(2) {
-      order: 1;
-    }
-    
-    /* 2. FREE DELIVERY NATIONWIDE (on top of cart) */
-    .nav-perks .perk:nth-child(1) {
-      order: 2;
-    }
-    
-    /* 3. Overseas Orders block: picture hero_products_header on top of text, side-by-side or stacked cleanly, bigger image */
-    .nav-perks .perk:nth-child(3) {
-      order: 3;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      margin-top: 4px;
-    }
-    
-    .mobile-header-img-container {
-      order: 1;
-      margin-bottom: 6px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-    
-    .mobile-header-img {
-      display: block;
-      width: 100%;
-      max-width: 320px;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid var(--gold);
-    }
-    
-    .nav-perks .perk:nth-child(3) span:last-child {
-      order: 2;
+      font-family: Arial, sans-serif;
+      font-size: .72rem;
+      text-align: center;
     }
 
-    /* Header actions container for Cart and Order buttons */
+    .grid-cell {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(201, 154, 62, 0.3);
+      border-radius: 6px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 65px;
+    }
+
+    /* Top-Left: BUY 3 SETS & GET 1 FREE */
+    .cell-top-left {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    /* Top-Right: Small hero_products_header image */
+    .cell-top-right {
+      grid-column: 2;
+      grid-row: 1;
+      padding: 4px;
+    }
+    .small-header-img {
+      width: 100%;
+      max-width: 90px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--gold);
+    }
+
+    /* Bottom-Left: FREE DELIVERY NATIONWIDE */
+    .cell-bottom-left {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    /* Bottom-Right: WE TAKE Overseas Orders */
+    .cell-bottom-right {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    /* Cart and Order buttons right below the rectangle grid */
     .header-actions {
       display: flex;
       width: 100%;
-      gap: 10px;
-      margin-top: 6px;
+      gap: 8px;
+      margin-top: 8px;
     }
     
-    /* Cart button placed right under Free Delivery */
     .header-actions .cart-btn-trigger {
-      order: 1;
       flex: 1;
       justify-content: center;
-      padding-top: 12px;
-      padding-bottom: 12px;
-      font-size: 0.9rem;
+      padding: 10px;
+      font-size: 0.85rem;
     }
 
-    /* Order button placed under Overseas Orders block */
     .header-actions .btn-order {
-      order: 2;
       flex: 1;
       justify-content: center;
-      padding-top: 12px;
-      padding-bottom: 12px;
-      font-size: 0.9rem;
+      padding: 10px;
+      font-size: 0.85rem;
     }
 
     header .wrap{justify-content:space-between;}
@@ -417,19 +415,28 @@
       <span class="leaf">🌿</span>
       <span>Evalneth<span class="sub">Revolution</span></span>
     </div>
+
     <div class="nav-perks">
       <div class="perk"><span class="ic">🚚</span><span>FREE DELIVERY<br>NATIONWIDE</span></div>
-      
       <div class="perk"><span class="ic">🎁</span><span>BUY 3 SETS &amp; GET 1<br>FREE</span></div>
-      
-      <div class="perk">
-        <div class="mobile-header-img-container">
-          <img src="assets/hero_products_header.jpg" alt="Evalneth Face Set" class="mobile-header-img">
-        </div>
-        <span class="ic" style="display:none;">🌍</span>
-        <span>WE TAKE<br>Overseas Orders</span>
+      <div class="perk"><span class="ic">🌍</span><span>WE TAKE<br>Overseas Orders</span></div>
+    </div>
+
+    <div class="mobile-rectangle-grid">
+      <div class="grid-cell cell-top-left">
+        <span style="color:var(--gold-light); font-weight:800;">🎁 BUY 3 SETS &amp; GET 1 FREE</span>
+      </div>
+      <div class="grid-cell cell-top-right">
+        <img src="assets/hero_products_header.jpg" alt="Evalneth Face Set" class="small-header-img">
+      </div>
+      <div class="grid-cell cell-bottom-left">
+        <span style="font-weight:700;">🚚 FREE DELIVERY NATIONWIDE</span>
+      </div>
+      <div class="grid-cell cell-bottom-right">
+        <span style="font-weight:700;">🌍 WE TAKE Overseas Orders</span>
       </div>
     </div>
+
     <div class="header-actions">
       <button class="cart-btn-trigger" onclick="toggleCart()">
         🛒 Cart <span class="cart-badge" id="cartCountBadge">0</span>
