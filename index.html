@@ -41,12 +41,18 @@
   .logo{display:flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:bold;letter-spacing:.5px;}
   .logo .leaf{font-size:1.7rem;color:var(--gold-light);}
   .logo .sub{display:block;font-size:.65rem;letter-spacing:2px;color:var(--gold-light);font-weight:normal;text-transform:uppercase;}
+  
   .nav-perks{display:flex;gap:26px;flex-wrap:wrap;font-family:Arial,sans-serif;font-size:.78rem;font-weight:600;}
   .nav-perks .perk{display:flex;align-items:center;gap:8px;}
   .nav-perks .perk .ic{font-size:1.2rem;color:var(--gold-light);}
   .nav-perks .perk span{line-height:1.15;}
   
   .header-actions {display: flex; align-items: center; gap: 12px;}
+
+  /* Mobile header product image (Hidden by default on desktop) */
+  .mobile-header-img {
+    display: none;
+  }
   
   .btn-order{
     background:var(--gold);
@@ -317,6 +323,21 @@
     /* Neat mobile layout for perks while maintaining fluidity */
     .nav-perks{display:flex;width:100%;justify-content:center;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.15);font-size:.72rem;}
     
+    /* Display resized product image on mobile header's right side next to cart/buttons */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .mobile-header-img {
+      display: block;
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid var(--gold);
+    }
+
     header .wrap{justify-content:space-between;}
     .hero h1{font-size:1.9rem;}
     .badge-struggle{font-size:0.85rem;letter-spacing:1px;padding:4px 10px;margin-bottom:10px;}
@@ -337,6 +358,7 @@
       <div class="perk"><span class="ic">🌍</span><span>WE TAKE<br>Overseas Orders</span></div>
     </div>
     <div class="header-actions">
+      <img src="assets/hero_products_header.jpg" alt="Evalneth Face Set" class="mobile-header-img">
       <button class="cart-btn-trigger" onclick="toggleCart()">
         🛒 Cart <span class="cart-badge" id="cartCountBadge">0</span>
       </button>
