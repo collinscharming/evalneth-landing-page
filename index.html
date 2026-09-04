@@ -320,7 +320,7 @@
     .final-cta .wrap{grid-template-columns:1fr;text-align:center;}
     .final-cta .prodshot{margin:0 auto;}
     
-    /* Reordered mobile perks matching your precise instructions */
+    /* Reordered mobile perks with structured stacking */
     .nav-perks {
       display: flex;
       flex-direction: column;
@@ -344,22 +344,27 @@
       order: 2;
     }
     
-    /* 3. WE TAKE Overseas Orders with hero_products_header image placed on top of it, made bigger */
+    /* 3. WE TAKE Overseas Orders with larger side-by-side header image on top of Order button */
     .nav-perks .perk:nth-child(3) {
       order: 3;
       flex-direction: column;
       align-items: center;
+      width: 100%;
     }
     
     .mobile-header-img-container {
       order: 1;
-      margin-bottom: 2px;
+      margin-bottom: 6px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
     
     .mobile-header-img {
       display: block;
-      width: 110px;
-      height: 75px;
+      width: 100%;
+      max-width: 280px;
+      height: 150px;
       object-fit: cover;
       border-radius: 8px;
       border: 2px solid var(--gold);
@@ -369,15 +374,25 @@
       order: 2;
     }
 
-    /* Expand header actions to fill the screen width evenly and fluidly */
+    /* Expand header actions to fill screen width side-by-side with Order button underneath the overseas block */
     .header-actions {
       display: flex;
       width: 100%;
       gap: 10px;
       margin-top: 6px;
     }
-    .header-actions .cart-btn-trigger,
+    
+    .header-actions .cart-btn-trigger {
+      order: 1;
+      flex: 1;
+      justify-content: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
     .header-actions .btn-order {
+      order: 2;
       flex: 1;
       justify-content: center;
       padding-top: 12px;
