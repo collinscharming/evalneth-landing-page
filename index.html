@@ -209,15 +209,9 @@
   .step p{font-family:Arial,sans-serif;color:var(--text-muted);font-size:.78rem;max-width:20ch;}
   .steps-row .arrow{font-size:1.5rem;color:var(--gold);font-weight:900;}
 
-  /* ---------- TESTIMONIALS ---------- */
-  .testimonials{padding:50px 0 70px;background:var(--cream-2);}
-  .testimonials h2{text-align:center;color:var(--green-deep);font-size:1.5rem;font-weight:800;margin-bottom:36px;letter-spacing:.5px;}
-  .testi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;align-items:start;}
-  .testi-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.08);}
-  .testi-card img{width:100%;display:block;}
-
   /* ---------- VIDEO SECTION ---------- */
   .video-section{padding:70px 0;background:var(--cream);text-align:center;}
+  .video-section.alt-bg{background:var(--cream-2);}
   .video-section .eyebrow-label{
     font-family:Arial,sans-serif;color:var(--gold);font-weight:800;font-size:.8rem;
     letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;
@@ -239,6 +233,13 @@
     padding:8px 14px;border-radius:20px;font-family:Arial,sans-serif;
     font-size:.8rem;font-weight:700;cursor:pointer;
   }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{padding:50px 0 70px;background:var(--cream-2);}
+  .testimonials h2{text-align:center;color:var(--green-deep);font-size:1.5rem;font-weight:800;margin-bottom:36px;letter-spacing:.5px;}
+  .testi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;align-items:start;}
+  .testi-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.08);}
+  .testi-card img{width:100%;display:block;}
 
   /* ---------- FINAL CTA / FOOTER ---------- */
   .final-cta{background:var(--green-deep);color:#fff;padding:36px 0;}
@@ -508,6 +509,21 @@
   </div>
 </section>
 
+<section class="video-section">
+  <div class="wrap">
+    <div class="eyebrow-label">See It In Action</div>
+    <h2>Watch The Evalneth Revolution</h2>
+    <p class="sub-lead">See exactly how the Face Soap, Cleanser, and Cream work together to transform your skin.</p>
+    <div class="video-frame">
+      <video autoplay muted loop playsinline preload="auto" id="useVideo">
+        <source src="assets/use_vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="mute-toggle" onclick="toggleMute('useVideo','muteBtnUse')" id="muteBtnUse">🔇 Unmute</button>
+    </div>
+  </div>
+</section>
+
 <section class="testimonials">
   <div class="wrap">
     <h2>Real People. Real Results.</h2>
@@ -519,17 +535,17 @@
   </div>
 </section>
 
-<section class="video-section">
+<section class="video-section alt-bg">
   <div class="wrap">
-    <div class="eyebrow-label">See It In Action</div>
-    <h2>Watch The Evalneth Revolution</h2>
-    <p class="sub-lead">See exactly how the Face Soap, Cleanser, and Cream work together to transform your skin.</p>
+    <div class="eyebrow-label">More From Evalneth</div>
+    <h2>The Revolution Continues</h2>
+    <p class="sub-lead">Take a closer look at what makes the Evalneth Revolution Face Set different.</p>
     <div class="video-frame">
       <video autoplay muted loop playsinline preload="auto" id="revVideo">
         <source src="assets/rev_vid.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <button class="mute-toggle" onclick="toggleMute()" id="muteBtn">🔇 Unmute</button>
+      <button class="mute-toggle" onclick="toggleMute('revVideo','muteBtnRev')" id="muteBtnRev">🔇 Unmute</button>
     </div>
   </div>
 </section>
@@ -733,9 +749,9 @@
     toggleCart();
   }
 
-  function toggleMute() {
-    const video = document.getElementById('revVideo');
-    const btn = document.getElementById('muteBtn');
+  function toggleMute(videoId, btnId) {
+    const video = document.getElementById(videoId);
+    const btn = document.getElementById(btnId);
     video.muted = !video.muted;
     btn.textContent = video.muted ? '🔇 Unmute' : '🔊 Mute';
   }
